@@ -13,7 +13,7 @@
 __version__ = "0.1.1"
 
 # imports
-#import configs
+import configs
 from PyQt5.QtCore import QDateTime, Qt, QTimer
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
@@ -22,6 +22,11 @@ from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
   QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
   QVBoxLayout, QWidget, QMessageBox)
 import sys
+import time
+import urllib.request
+import json
+import functools
+import datetime
 
 class WidgetGallery(QDialog):
 
@@ -34,7 +39,7 @@ class WidgetGallery(QDialog):
     self.createMenu()
     self.createSysInfo()
     self.closeEvent = self.closeWindow
-    mainLayout.addWidget(self.menu,   0,0,2,3)
+    mainLayout.addWidget(self.menu,   0,0,4,12)
     mainLayout.addWidget(self.sysinfo,5,0,3,3)
     self.setLayout(mainLayout)
 
@@ -69,7 +74,7 @@ class WidgetGallery(QDialog):
     self.menu = QGroupBox("Forecast")
     layout = QGridLayout()
     self.GPSLabel = []
-    for i in range(0,6):
+    for i in range(0,12):
       x = i * 4
       for j in range (0,4):
 #        if j == 0:
@@ -78,9 +83,9 @@ class WidgetGallery(QDialog):
 #          label.setPixmap(pixmap)
 #          self.GPSLabel.append(label)
 #        else:
-        label = QLabel(str(i) + " " + str(j))
-        label.setFixedSize(25,25)
-        self.GPSLabel.append(QLabel(str(i) + " " + str(j)))
+        label = QLabel("This is a fairly long test")
+        label.setFixedSize(50,10)
+        self.GPSLabel.append(label)
         self.GPSLabel[x + j].setStyleSheet('QLabel {color:red;font: bold; font-size: 12px}')
         layout.addWidget(self.GPSLabel[x + j], j, i)   
                  
@@ -107,13 +112,36 @@ class WidgetGallery(QDialog):
         self.TestLabel[x + j].setStyleSheet('QLabel {color:red;font: bold; font-size: 12px}')
         layout.addWidget(self.TestLabel[x + j], j, i)
     
-    #layout.addWidget(buttonExit,0,0)   
+    self.buttonCoAsst = QPushButton('NEW API CALL')
+    self.buttonCoAsst.clicked.connect(functools.partial(self.UpdateSysInfo, None))  
+    layout.addWidget(self.buttonCoAsst,0,2)
                  
     self.sysinfo.setLayout(layout)
+
+  def UpdateSysInfo(self, ApiJson=None):
+    if(ApiJson == None):
+      s_Contents = urllib.request.urlopen(configs.s_FullAPI).read().decode("utf-8") 
+      # dump the return string into a dictionary
+      self.d_ForecastInformation = json.loads(s_Contents)
+      # capture the hourly forecasts for ease of access 
+      self.l_HourlyForecasts = self.d_ForecastInformation["hourly"]["data"]
+    
+    for i in range(len(self.GPSLabel)):
+      if i % 4 == 0:
+        x = self.l_HourlyForecasts[i % 12]["time"]
+        y = datetime.datetime.fromtimestamp(x)
+        self.GPSLabel[i].setText(y.strftime("%H:%M"))
+      if i % 4 == 1:
+        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i % 12]["icon"]))
+      if i % 4 == 2:
+        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i % 12]["temperature"]))
+      if i % 4 == 3:
+        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i % 12]["precipProbability"]))
 
 if __name__ == "__main__":
   app = QApplication(sys.argv)
   gallery = WidgetGallery()
   gallery.show()
   sys.exit(app.exec_()) 
+  gallery.TestLabel[3].setText("This is also a test")
 ################################## end file ###################################

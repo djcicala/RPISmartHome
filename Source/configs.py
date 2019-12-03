@@ -34,6 +34,7 @@ s_ApiBase            = "https://api.darksky.net/forecast/"     # root API
 s_ApiKey             = "dea7ee9f3820aa9e6f8c6f1528ebb0aa" # modify this with your own darksky key
 s_GPSLocation_LatLon = "42.344137,-83.309652" # modify this with your own GPS coordinates, e.g. "37.5148,15.7891"
 s_FullAPI = s_ApiBase + s_ApiKey +  "/" + s_GPSLocation_LatLon # full API path
+print(s_FullAPI)
 
 ######################### Temperature sensor information #######################
 
@@ -62,8 +63,8 @@ if SW_USE_METRIC_UNITS:
     
   f_TemperatureSetback = 1.11 
   f_ComfortZoneRange   = 2.75
-  f_CoolSettingLowHum  = (0.55556 * f_CoolSettingLowHum) - 32
-  f_CoolSettingHighHum = (0.55556 * f_CoolSettingHighHum) - 32
+  #f_CoolSettingLowHum  = (0.55556 * f_CoolSettingLowHum) - 32
+  #f_CoolSettingHighHum = (0.55556 * f_CoolSettingHighHum) - 32
     
 f_HumThreshold_Pct = 50
 
