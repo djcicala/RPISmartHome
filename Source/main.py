@@ -19,6 +19,11 @@ import gui
 import water_lawn
 import systime 
 
+class Controller:
+  def SystemInit():
+    self.o_TemperatureModule = temperature.TemperatureModule()
+    self.o_WaterLawnModule   = water_lawn.
+
 def main():
   o_TemperatureModule = temperature.TemperatureModule()
   o_TemperatureModule.main()

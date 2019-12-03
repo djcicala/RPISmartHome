@@ -54,8 +54,8 @@ class TemperatureSensor:
 class TemperatureModule:
 	
   def __init__(self, o_InputSysTime):
-		self.o_OutdoorTempSensor = TemperatureSensor(configs.i_OutdoorSensorPin)
-		self.o_IndoorTempSensor  = TemperatureSensor(configs.i_IndoorSensorPin)
+    self.o_OutdoorTempSensor = TemperatureSensor(configs.i_OutdoorSensorPin)
+    self.o_IndoorTempSensor  = TemperatureSensor(configs.i_IndoorSensorPin)
     self.o_SysTime = o_InputSysTime
   
   def ReadSensors(self):

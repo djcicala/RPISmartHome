@@ -97,47 +97,47 @@ f_ExpectRainPercent = 0.65
 i_SandType = 4
 
 #Sand
-if i_SandType = 1:
+if i_SandType == 1:
   f_Wilt = 5.5
   f_Capacity = 10
 #Loamy Sand
-elif i_SandType = 2:
+elif i_SandType == 2:
   f_Wilt = 9.25
   f_Capacity = 16
 #Sandy Loam
-elif i_SandType = 3:
+elif i_SandType == 3:
   f_Wilt = 12
   f_Capacity = 21
 #Loam
-elif i_SandType = 4:
+elif i_SandType == 4:
   f_Wilt = 15.75
   f_Capacity = 27
 #Silt Loam
-elif i_SandType = 5:
+elif i_SandType == 5:
   f_Wilt = 18.75
   f_Capacity = 30
 #Silty Clay Loam
-elif i_SandType = 6:
+elif i_SandType == 6:
   f_Wilt = 24
-  f_Capacity = 36
+  f_Capacity == 36
 #Clay Loam
-elif i_SandType = 7:
+elif i_SandType == 7:
   f_Wilt = 21.5
   f_Capacity = 32
 #Sandy Clay Loam
-elif i_SandType = 8:
+elif i_SandType == 8:
   f_Wilt = 20.75
   f_Capacity = 29
 #Sandy Clay
-elif i_SandType = 9:
+elif i_SandType == 9:
   f_Wilt = 18.25
   f_Capacity = 28
 #Silty Clay
-elif i_SandType = 10:
+elif i_SandType == 10:
   f_Wilt = 25
   f_Capacity = 40
 #Clay
-elif i_SandType = 11:
+elif i_SandType == 11:
   f_Wilt = 26.5
   f_Capacity = 40
   
