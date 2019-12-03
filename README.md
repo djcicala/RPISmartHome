@@ -25,3 +25,9 @@ Hardware Bill of Materials:
 - Wires and/or breadboard
 
 Current features include: GUI rendering of forecasts, thermostat functionality, and lawn watering regulation.
+
+Notable thanks: 
+
+http://adamwhitcroft.com/climacons/ for providing a free library of weather icons.
+
+https://darksky.net/ for providing a free (and quite comprehensive) weather API.
