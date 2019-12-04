@@ -144,18 +144,18 @@ class TemperatureModule:
     return i_HvacState
     
   def main(self):
-    while True:
-      print("Loop")
-      self.DetermineSeason()
-      self.DetermineTime()
-      self.ReadSensors()
-      flag, setting = self.MakeHVACDecision()
-      state   = self.ChangeSystemState()
-      print("Flag:" + str(flag))
-      print("Setting:" + str(setting))
-      print("State:" + str(state))
-      print("Indoor Temp:" +str(self.o_IndoorTempSensor.f_Temperature_F))
-      print("Outdoor Temp:" +str(self.o_OutdoorTempSensor.f_Temperature_F))
-      print("Outdoor Humid:" +str(self.o_OutdoorTempSensor.f_Humidity_Pct))
-      time.sleep(5)
+    print("===========================Start Loop")
+    self.o_SysTime.DetermineSeason()
+    self.o_SysTime.DetermineTime()
+    self.ReadSensors()
+    flag, setting = self.MakeHVACDecision()
+    state   = self.ChangeSystemState()
+    print("Flag:" + str(flag))
+    print("Setting:" + str(setting))
+    print("State:" + str(state))
+    print("Indoor Temp:" +str(self.o_IndoorTempSensor.f_Temperature_F))
+    print("Outdoor Temp:" +str(self.o_OutdoorTempSensor.f_Temperature_F))
+    print("Outdoor Humid:" +str(self.o_OutdoorTempSensor.f_Humidity_Pct))
+    print("===================================")
+    time.sleep(5)
 ################################## end file ###################################

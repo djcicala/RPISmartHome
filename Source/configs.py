@@ -34,7 +34,6 @@ s_ApiBase            = "https://api.darksky.net/forecast/"     # root API
 s_ApiKey             = "dea7ee9f3820aa9e6f8c6f1528ebb0aa" # modify this with your own darksky key
 s_GPSLocation_LatLon = "42.344137,-83.309652" # modify this with your own GPS coordinates, e.g. "37.5148,15.7891"
 s_FullAPI = s_ApiBase + s_ApiKey +  "/" + s_GPSLocation_LatLon # full API path
-print(s_FullAPI)
 
 ######################### Temperature sensor information #######################
 
@@ -142,8 +141,6 @@ elif i_SandType == 11:
   f_Wilt = 26.5
   f_Capacity = 40
   
-
-
 ############################## Timing Configs ##################################
 # note: all times considered to be in military time
 i_NighttimeHour = 21  # when does night start?

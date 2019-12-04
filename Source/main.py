@@ -15,18 +15,22 @@ __version__ = "0.3.0"
 # imports
 import configs
 import temperature
-import gui
+#import gui
 import water_lawn
 import systime 
 
 class Controller:
   def SystemInit():
     self.o_TemperatureModule = temperature.TemperatureModule()
-    self.o_WaterLawnModule   = water_lawn.
 
 def main():
-  o_TemperatureModule = temperature.TemperatureModule()
-  o_TemperatureModule.main()
+  o_SystimeModule = systime.Systime()
+  o_TemperatureModule = temperature.TemperatureModule(o_SystimeModule)
+  o_WaterLawnModule   = water_lawn.WaterModule(o_SystimeModule, o_TemperatureModule.o_OutdoorTempSensor)
+  while True:
+    o_TemperatureModule.main()
+    o_WaterLawnModule.main()
+  
 
 if __name__ == "__main__":
   main()

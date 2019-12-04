@@ -14,6 +14,7 @@ __version__ = "0.1.0"
 
 # imports
 import configs 
+import datetime
 
 class Systime:
   
@@ -21,16 +22,16 @@ class Systime:
     self.o_TimeNow = datetime.datetime.now()
   
   def DetermineSeason(self):
-	  self.o_TimeNow = datetime.datetime.now()
-	  if ( o_TimeNow.month < configs.i_StartSummerMonth or o_TimeNow.month > configs.i_EndSummerMonth):
-	    self.i_Season = configs.i_WintertimeFlag
-	  else:
-			self.i_Season = configs.i_SummertimeFlag
+    self.o_TimeNow = datetime.datetime.now()
+    if ( self.o_TimeNow.month < configs.i_StartSummerMonth or self.o_TimeNow.month > configs.i_EndSummerMonth):
+      self.i_Season = configs.i_WintertimeFlag
+    else:
+      self.i_Season = configs.i_SummertimeFlag
 			
   def DetermineTime(self):
     self.o_TimeNow = datetime.datetime.now()
     # determine time of day
-    if(o_TimeNow.hour > configs.i_NighttimeHour or o_TimeNow.hour < configs.i_MorningHour):
+    if(self.o_TimeNow.hour > configs.i_NighttimeHour or self.o_TimeNow.hour < configs.i_MorningHour):
       self.i_TimeFlag = configs.i_NightFlag
     else:
       self.i_TimeFlag = configs.i_DaytimeFlag

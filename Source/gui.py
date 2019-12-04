@@ -128,16 +128,22 @@ class WidgetGallery(QDialog):
     
     for i in range(len(self.GPSLabel)):
       if i % 4 == 0:
-        x = self.l_HourlyForecasts[i % 12]["time"]
+        x = self.l_HourlyForecasts[i // 4]["time"]
         y = datetime.datetime.fromtimestamp(x)
         self.GPSLabel[i].setText(y.strftime("%H:%M"))
       if i % 4 == 1:
-        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i % 12]["icon"]))
+        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i // 4]["icon"]))
       if i % 4 == 2:
-        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i % 12]["temperature"]))
+        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i // 4]["temperature"]))
       if i % 4 == 3:
-        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i % 12]["precipProbability"]))
+        self.GPSLabel[i].setText(str(self.l_HourlyForecasts[i // 4]["precipProbability"]))
 
+  def main(self):
+    app = QApplication(sys.argv)
+    gallery = WidgetGallery()
+    gallery.show()
+    sys.exit(app.exec_()) 
+    gallery.TestLabel[3].setText("This is also a test")
 if __name__ == "__main__":
   app = QApplication(sys.argv)
   gallery = WidgetGallery()
