@@ -4,16 +4,16 @@
 '''****************************************************************************
 * File Name: configs.py                                                       *
 * Purpose:   Global variables and configurations for RPI Smart Home.          *
-* Date:      11/26/2019                                                       *
+* Date:      12/05/2019                                                       *
 * Copyright © 2019 Darren Cicala and Tyler Skene. All rights reserved.        *
 * Powered by the DarkSky API.                                                 *
 ****************************************************************************'''
 
-# Note: none of the values in this file are meant to be used as variables.
-# they can be equated to #define macros in C/C++.
+# Note: none of the values in this file are meant to be used or manipulated 
+# as variables. they can be equated to #define macros in C/C++.
 
 # document version
-__version__ = "0.4.1"
+__version__ = "2.0.0"
 
 # there should be no imports in this file!
 
@@ -53,7 +53,7 @@ f_CoolThreshold  = 75 # temperature (in F) that the system will switch to coolin
 f_HeatSetting        = 68 # temp to se
 f_CoolSetting        = 75
 f_TemperatureSetback = 2
-f_ComfortZoneRange   = 5
+f_ComfortZoneRange   = 3
 
 if SW_USE_METRIC_UNITS:
   f_HeatThreshold = (0.55556 * f_HeatThreshold) - 32
