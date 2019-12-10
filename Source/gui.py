@@ -4,13 +4,13 @@
 '''****************************************************************************
 * File Name: gui.py                                                           *
 * Purpose:   GUI renderer using TKinter objects.                              *
-* Date:      12/05/2019                                                       *
+* Date:      12/10/2019                                                       *
 * Copyright © 2019 Darren Cicala and Tyler Skene. All rights reserved.        *
 * Powered by the DarkSky API.                                                 *
 ****************************************************************************'''
 
 # document version 
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 
 # file imports
 import configs
@@ -153,6 +153,7 @@ class TwelveHourForecast:
       self.l_Forecasts[i].o_Temp.set(str(o_HourlyForecast["temperature"]))
       self.l_Forecasts[i].o_RainPct.set(str(o_HourlyForecast["precipProbability"]))
 
+
 # this class handles the forecasts for the next five days instead of hourly      
 class FiveDayForecast:
   
@@ -207,6 +208,7 @@ class FiveDayForecast:
       self.l_Forecasts[i].o_Time.set(s_TimeOfForecast)
       self.l_Forecasts[i].o_Temp.set(str(o_DailyForecast["temperatureHigh"]))
       self.l_Forecasts[i].o_RainPct.set(str(o_DailyForecast["precipProbability"]))
+
 
 # this class handles the current states of the temperature system      
 class TempSystemStates:
@@ -466,6 +468,8 @@ class WaterSystemStates:
       self.o_NeedsWaterLabel.config(fg="red")
       self.o_SprinklerSt.set("ON")
 
+
+# main GUI for the system
 class mainGUI:
   
   '''*****************************************************************
@@ -487,10 +491,10 @@ class mainGUI:
     self.master.config(bg="white")
     
     # create the label bins
-    self.o_THF = TwelveHourForecast(self.master, 50, 100)
-    self.o_FDF = FiveDayForecast(self.master, 400, 300)
-    self.o_TSS = TempSystemStates(self.master, 100, 475)
-    self.o_WSS = WaterSystemStates(self.master, 600,475)
+    self.o_THF = TwelveHourForecast(self.master, 40, 50)
+    self.o_FDF = FiveDayForecast(self.master, 400, 250)
+    self.o_TSS = TempSystemStates(self.master, 175, 425)
+    self.o_WSS = WaterSystemStates(self.master, 700,425)
   
   '''*****************************************************************
   * Name: update                                                                   

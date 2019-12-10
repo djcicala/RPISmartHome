@@ -4,7 +4,7 @@
 '''****************************************************************************
 * File Name: configs.py                                                       *
 * Purpose:   Global variables and configurations for RPI Smart Home.          *
-* Date:      12/05/2019                                                       *
+* Date:      12/10/2019                                                       *
 * Copyright © 2019 Darren Cicala and Tyler Skene. All rights reserved.        *
 * Powered by the DarkSky API.                                                 *
 ****************************************************************************'''
@@ -13,7 +13,7 @@
 # as variables. they can be equated to #define macros in C/C++.
 
 # document version
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 
 # there should be no imports in this file!
 
@@ -44,8 +44,8 @@ i_DoNothingFlag  = 0  # flag state indicating system will not heat or cool
 i_HeatFlag       = 1  # flag state indicating system will heat 
 i_CoolFlag       = 2  # flag state indicating system will cool
 
-i_HvacOff = 0
-i_HvacOn  = 1
+i_HvacOff = 0 # flag state indicating that the hvac system is off
+i_HvacOn  = 1 # flag state indicating that the hvac system is on
 
 f_HeatThreshold  = 65 # temperature (in F) that the system will switch to heating
 f_CoolThreshold  = 75 # temperature (in F) that the system will switch to cooling
