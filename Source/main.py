@@ -10,7 +10,7 @@
 ****************************************************************************'''
 
 # document version
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 
 # imports
 import configs
@@ -19,6 +19,7 @@ import gui
 import water_lawn
 import systime 
 
+import datetime
 import time
 
 def main():
@@ -46,11 +47,15 @@ def main():
     if(i_Error == configs.SYSERROR_TEMP_INDOOR_SENSOR_FAILRUE
       or i_Error == configs.SYSERROR_TEMP_OUTDOOR_SENSOR_FAILURE):
       o_TemperatureModule = temperature.TemperatureModule(o_SystimeModule)
+	  with open("errors.csv", "a") as o_File:
+		o_File.write(datetime.datetime.now.strftime("%m/%d/%Y, %H:%M:%S") + str(i_Error))
     
     # if a water error was raised, re-initialize the module
     if(i_Error == configs.SYSERROR_WL_API_CALL_FAILURE 
       or i_Error == configs.SYSERROR_WL_MOISTURE_SENSOR_FAILURE):
       o_TemperatureModule = temperature.TemperatureModule(o_SystimeModule)
+	  with open("errors.csv", "a") as o_File:
+		o_File.write(datetime.datetime.now.strftime("%m/%d/%Y, %H:%M:%S") + str(i_Error))
       
     # 10 minute cycle time
     time.sleep(5)
